@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>SIMPLE KALKULATOR</title>
 </head>
 <body bgcolor="aqua">
   <h2>KALKULATOR SEDERHANA</h2>
@@ -16,7 +16,10 @@
     <input type="radio" name="operator" id="tambah" onclick="tambah()">tambah<br>
     <input type="radio" name="operator" id="kurang" onclick="kurang()">kurang<br>
     <input type="radio" name="operator" id="kali" onclick="kali()">kali<br>
-    <input type="radio" name="operator" id="bagi" onclick="bagi()">bagi<br><br>
+    <input type="radio" name="operator" id="bagi" onclick="bagi()">bagi<br>
+    <input type="radio" name="operator" id="modulus" onclick="modulus()">modulus<br>
+    <input type="radio" name="operator" id="pangkat" onclick="pangkat()">pangkat<br>
+    <input type="radio" name="operator" id="persen" onclick="persen()">persen<br>
   <label>Hasil:</label>
     <input type="text" id="hasil" disabled>
     <input type="reset" value="reset" onclick="resetForm()" id="reset12">
@@ -38,7 +41,7 @@
       function printHasil(output)
       {
         hasil = document.getElementById('hasil');
-        return hasil.value = output;l
+        return hasil.value = output;
       }
 
       function tambah()
@@ -72,6 +75,29 @@
 
       }
 
+      function modulus()
+      {
+        let nilai = ambilNilai();
+        prosesModulus = parseInt(nilai[0]) % parseInt(nilai[1]);
+        return printHasil(prosesModulus);
+
+      }
+
+      function pangkat()
+      {
+        let nilai = ambilNilai();
+        prosespangkat = Math.pow(parseInt(nilai[0]), (nilai[1]));
+        return printHasil(prosespangkat);
+
+      }
+
+      function persen()
+      {
+        let nilai = ambilNilai();
+        prosespersen = parseFloat(nilai[0]) / (nilai[1]);
+        return printHasil(prosespersen);
+      }  
+
       function resetForm()
       {
         document.getElementById('input1').value = '';
@@ -81,6 +107,9 @@
         document.getElementById('kurang').checked = false;
         document.getElementById('kali').checked = false;
         document.getElementById('bagi').checked = false;
+        document.getElementById('modulus').checked = false;
+        document.getElementById('pangkat').checked = false;
+        document.getElementById('persen').checked = false;
 
       }
       
